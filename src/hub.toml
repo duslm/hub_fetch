@@ -1,0 +1,40 @@
+[system]
+arch = "amd64"
+os = "debian"
+file_type = "deb"
+
+[packages]
+#syntax is ["user", "reponame"]
+# repos = [
+#     ["VSCodium", "vscodium"],
+#     ["agalwood", "Motrix"],
+#     ["atom", "atom"],
+#     ["brave", "brave-browser"]
+# ]
+  [packages.vscodium]
+  arch = "amd64"
+  file_type = "deb"
+  user = "VSCodium"
+  repo = "vscodium"
+  get_source = true
+
+  [packages.atom]
+  arch = "amd64"
+  file_type = "deb"
+  user = "atom"
+  repo = "atom"
+  get_source = true
+
+  [packages.keepassxc]
+  arch = "x86_64"
+  file_type = "AppImage"
+  user = "keepassxreboot"
+  repo = "keepassxc"
+  get_source = true
+
+  [packages.neovim]
+  arch = "linux64"
+  file_type = "tar.gz"
+  user = "neovim"
+  repo = "neovim"
+  get_source = true
