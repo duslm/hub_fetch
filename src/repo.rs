@@ -12,7 +12,8 @@ impl DownloadProgress{
         let total_size = resp.headers().get(reqwest::header::CONTENT_LENGTH)
             .and_then(|ct_len| ct_len.to_str().ok())
             .and_then(|ct_len| ct_len.parse().ok())
-            .unwrap_or(0);
+			.unwrap_or(0);
+		
         let pb = ProgressBar::new(total_size);
         pb.set_style(ProgressStyle::default_bar()
             .template("{spinner:.green} [{elapsed_precise}] [{bar:40.white/blue}] {bytes}/{total_bytes} ({eta})")
@@ -109,10 +110,8 @@ impl Repo{
 	
 	pub fn download_source(&mut self){
 		let url = self.parsed_response["zipball_url"].as_str().unwrap().to_string();
-	
 		let client = reqwest::blocking::Client::new();
 		let resp = client.get(&url).header(reqwest::header::USER_AGENT, "foo").send().unwrap();
-    
         let mut pb = DownloadProgress::new_with_response(resp);
 
 		match std::fs::create_dir("source"){
@@ -132,10 +131,10 @@ impl Repo{
 				return;
 			},
 		};
-	
+
+
 		println!("{}", self.package_name.clone());
         let resp = reqwest::blocking::get(url.as_str()).expect("failed to get response");
-
         let mut pb = DownloadProgress::new_with_response(resp);
 
 		match std::fs::create_dir("downloads"){

@@ -4,13 +4,16 @@ os = "debian"
 file_type = "deb"
 
 [packages]
-#syntax is ["user", "reponame"]
-# repos = [
-#     ["VSCodium", "vscodium"],
-#     ["agalwood", "Motrix"],
-#     ["atom", "atom"],
-#     ["brave", "brave-browser"]
-# ]
+# syntax is
+#   [packages.{repo}]
+#   arch = "{arch}"
+#   file_type = "{filetype}"
+#   user = "{user}"
+#   repo = "{repo}"
+#   get_package = true/false
+#   get_source = true/false
+# arch and filetype are matched by regex, so should be flexible as seen below
+
   [packages.vscodium]
   arch = "amd64"
   file_type = "deb"
@@ -23,6 +26,7 @@ file_type = "deb"
   file_type = "deb"
   user = "atom"
   repo = "atom"
+  get_package = false
   get_source = true
 
   [packages.keepassxc]
@@ -30,6 +34,7 @@ file_type = "deb"
   file_type = "AppImage"
   user = "keepassxreboot"
   repo = "keepassxc"
+  get_package = false
   get_source = true
 
   [packages.neovim]
@@ -37,4 +42,5 @@ file_type = "deb"
   file_type = "tar.gz"
   user = "neovim"
   repo = "neovim"
+  get_package = false
   get_source = true
