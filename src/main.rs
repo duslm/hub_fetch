@@ -15,8 +15,6 @@ fn read_hub(filename: String) -> String{
 	std::fs::read_to_string(filename).expect("Couldnt read hub file")
 }
 
-
-
 fn main(){
 	let m = App::new(clap::crate_name!())
 		.version(clap::crate_version!())
@@ -46,7 +44,6 @@ fn main(){
 		let repo_box = Box::new(constructed_repo);
 		repos.push(repo_box);
 	}
-
 
 	let mut to_toml: btree_map::BTreeMap<String, Repo> = btree_map::BTreeMap::new();
 

@@ -26,7 +26,6 @@ impl DownloadProgress{
     }
 }
 
-
 impl std::io::Read for DownloadProgress{
     fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
         match &mut self.inner{
@@ -87,8 +86,6 @@ impl Repo{
 		serde_json::from_str(&res).unwrap()
 	}
 	
-	
-	
 	pub fn get_package_url(&mut self) -> Result<String, String> {
 		let re = Regex::new(format!(".*{}.*\\.{}$", self.arch.as_str() , self.file_type).as_str()).unwrap();
 		let mut package_matches: Vec<String> = vec!();
@@ -105,8 +102,6 @@ impl Repo{
 			_ => Err("Multiple matches".into())
 		}
 	}
-	
-	
 	
 	pub fn download_source(&mut self){
 		let url = self.parsed_response["zipball_url"].as_str().unwrap().to_string();
@@ -145,5 +140,4 @@ impl Repo{
         
 		std::io::copy(&mut pb, &mut f).expect("copy fail");
 	}
-	
 }
